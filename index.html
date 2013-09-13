@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CS 279</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="initial-scale=1.0, user-scalable=0" name="viewport">
+</head>
+<body style="font-family:Helvetica">
+<!--<p><b>CS 279 Homework 2</b><br>Rob and Karandeep</p>-->
+
+<div id='question' style='position:fixed'></div>
+<div id='data' style='position:fixed;right:10px;top:10px;'></div>
+
+<div id='menu' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
+<img id='menuimg' src='menu_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+</div>
+
+<div id='ribbon' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
+<img id='ribbonimg' src='ribbon_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+</div>
+
+<div id='command' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
+<img id='commandimg' src='command_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+</div>
+</body>
+<script>
+var menuBar = document.getElementById('menu');
+var qBox = document.getElementById('question');
+
+var qNum = 0;
+var currentMenu = '';
+
+var xoffset = 0;
+var yoffset = 0;
+
+var xArray = [];
+var yArray = [];
+var timeArray = [];
+var qArray = ['Question 1: Insert a Footnote using the Menu Interface.', 'Question 2: Insert a Footnote using the Ribbon Interface.','Insert a Footnote using the CommandMaps Interface.'];
+var menuArray = ['menu','ribbon','command'];
+var correctMenu = ['menu_insert','ribbon_references','command_show'];
+var correctLeft = [237,107,108];
+var correctRight = [465,164,165]
+var correctTop = [272,54,377];
+var correctBottom = [296,119,445];
+
+// cycles through all images once, which brings them into cache
+var loadAllImages = function()
+{
+	var menuImages = ['menu_edit','menu_file','menu_font','menu_format','menu_insert','menu_main','menu_table','menu_tools','menu_view','menu_window','menu_word'];
+	var ribbonImages = ['ribbon_file','ribbon_insert','ribbon_mailings','ribbon_main','ribbon_pagelayout','ribbon_references','ribbon_review','ribbon_view'];
+	var commandImages = ['command_main','command_show'];
+	
+	for (i=0;i<menuImages.length;i++)
+	{
+		document.getElementById('menuimg').src = menuImages[i] + '.png';
+	}
+	
+	for (i=0;i<ribbonImages.length;i++)
+	{
+		document.getElementById('ribbonimg').src = ribbonImages[i] + '.png';
+	}
+	
+	for (i=0;i<commandImages.length;i++)
+	{
+		document.getElementById('commandimg').src = commandImages[i] + '.png';
+	}
+
+}
+
+var displayQuestion = function()
+{
+	qBox.innerHTML = qArray[qNum] + "<br><button onclick='displayMenu()'>Next</button>";
+	document.getElementById(menuArray[qNum]+'img').src = menuArray[qNum]+'_main.png';
+	currentMenu = menuArray[qNum] + '_main';
+}
+
+var displayMenu = function()
+{
+	qBox.style.visibility = 'hidden';
+	document.getElementById(menuArray[qNum]).style.visibility = 'visible';
+}
+
+var moveData = function(event)
+{
+	document.getElementById('data').innerHTML=parseInt(event.clientX-xoffset) + ',' + parseInt(event.clientY-yoffset);
+}
+
+var checkClick = function(event)
+{
+	var x = event.clientX-xoffset;
+	var y = event.clientY-yoffset;
+	var currentImg = document.getElementById(menuArray[qNum]+'img');
+
+	if (menuArray[qNum] == 'menu')
+	{
+		if (y>=0 && y<=20)
+		{
+			if (x>=41 && x<=101)
+			{
+				currentImg.src = 'menu_word.png';
+				currentMenu = 'menu_word';
+			}
+			else if (x>=102 && x<=143)
+			{
+				currentImg.src = 'menu_file.png';
+				currentMenu = 'menu_file';
+			}
+			else if (x>=144 && x<=187)
+			{
+				currentImg.src = 'menu_edit.png';
+				currentMenu = 'menu_edit';
+			}
+			else if (x>=188 && x<=237)
+			{
+				currentImg.src = 'menu_view.png';
+				currentMenu = 'menu_view';
+			}
+			else if (x>=238 && x<=294)
+			{
+				currentImg.src = 'menu_insert.png';
+				currentMenu = 'menu_insert';
+			}
+			else if (x>=295 && x<=360)
+			{
+				currentImg.src = 'menu_format.png';
+				currentMenu = 'menu_format';
+			}
+			else if (x>=361 && x<=409)
+			{
+				currentImg.src = 'menu_font.png';
+				currentMenu = 'menu_font';
+			}
+			else if (x>=410 && x<=465)
+			{
+				currentImg.src = 'menu_tools.png';
+				currentMenu = 'menu_tools';
+			}
+			else if (x>=466 && x<=521)
+			{
+				currentImg.src = 'menu_table.png';
+				currentMenu = 'menu_table';
+			}
+			else if (x>=522 && x<=592)
+			{
+				currentImg.src = 'menu_window.png';
+				currentMenu = 'menu_window';
+			}
+		}
+	}
+	else if (menuArray[qNum] == 'ribbon')
+	{
+		if (y>=31 && y<=51)
+		{
+			if (x>=9 && x<=65)
+			{
+				currentImg.src = 'ribbon_file.png';
+				currentMenu = 'ribbon_file';
+			}
+			else if (x>=69 && x<=124)
+			{
+				currentImg.src = 'ribbon_main.png';
+				currentMenu = 'ribbon_main';
+			}
+			else if (x>=128 && x<=181)
+			{
+				currentImg.src = 'ribbon_insert.png';
+				currentMenu = 'ribbon_insert';
+			}
+			else if (x>=185 && x<=271)
+			{
+				currentImg.src = 'ribbon_pagelayout.png';
+				currentMenu = 'ribbon_pagelayout';
+			}
+			else if (x>=275 && x<=355)
+			{
+				currentImg.src = 'ribbon_references.png';
+				currentMenu = 'ribbon_references';
+			}
+			else if (x>=359 && x<=427)
+			{
+				currentImg.src = 'ribbon_mailings.png';
+				currentMenu = 'ribbon_mailings';
+			}
+			else if (x>=431 && x<=491)
+			{
+				currentImg.src = 'ribbon_review.png';
+				currentMenu = 'ribbon_review';
+			}
+			else if (x>=495 && x<=544)
+			{
+				currentImg.src = 'ribbon_view.png';
+				currentMenu = 'ribbon_view';
+			}
+		}
+	}
+	else if (menuArray[qNum] == 'command')
+	{
+		if (x>=70 && x<=208 && y>=31 && y<=51)
+		{
+			currentImg.src = 'command_show.png';
+			currentMenu = 'command_show';
+		}
+	}
+	
+	
+	if (currentMenu == correctMenu[qNum])
+	{
+		if (x>=correctLeft[qNum] && x<=correctRight[qNum] && y>=correctTop[qNum] && y<=correctBottom[qNum])
+		{
+			goToNextQuestion();
+		}
+	
+	}
+}
+
+var goToNextQuestion = function()
+{
+	qBox.style.visibility = 'visible';
+	document.getElementById(menuArray[qNum]).style.visibility = 'hidden';
+	qNum++;
+	if (qNum < menuArray.length)
+	{
+		displayQuestion();
+	}
+	else {
+		qBox.innerHTML = 'Congratulations on finishing!';
+	}
+}
+
+loadAllImages();
+displayQuestion();
+</script>
+</html>
