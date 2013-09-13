@@ -12,15 +12,15 @@
 <div id='data' style='position:fixed;right:10px;top:10px;'></div>
 
 <div id='menu' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
-<img id='menuimg' src='menu_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+<img id='menuimg' src='./images/menu_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
 </div>
 
 <div id='ribbon' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
-<img id='ribbonimg' src='ribbon_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+<img id='ribbonimg' src='./images/ribbon_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
 </div>
 
 <div id='command' style='visibility:hidden;position:absolute;left:0px;top:0px;'>
-<img id='commandimg' src='command_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
+<img id='commandimg' src='./images/command_main.png' onmousemove='moveData(event)' onclick='checkClick(event)'></img>
 </div>
 </body>
 <script>
@@ -53,17 +53,17 @@ var loadAllImages = function()
 	
 	for (i=0;i<menuImages.length;i++)
 	{
-		document.getElementById('menuimg').src = menuImages[i] + '.png';
+		document.getElementById('menuimg').src = './images/' + menuImages[i] + '.png';
 	}
 	
 	for (i=0;i<ribbonImages.length;i++)
 	{
-		document.getElementById('ribbonimg').src = ribbonImages[i] + '.png';
+		document.getElementById('ribbonimg').src = './images/' + ribbonImages[i] + '.png';
 	}
 	
 	for (i=0;i<commandImages.length;i++)
 	{
-		document.getElementById('commandimg').src = commandImages[i] + '.png';
+		document.getElementById('commandimg').src = './images/' + commandImages[i] + '.png';
 	}
 
 }
@@ -71,7 +71,7 @@ var loadAllImages = function()
 var displayQuestion = function()
 {
 	qBox.innerHTML = qArray[qNum] + "<br><button onclick='displayMenu()'>Next</button>";
-	document.getElementById(menuArray[qNum]+'img').src = menuArray[qNum]+'_main.png';
+	document.getElementById(menuArray[qNum]+'img').src = './images/' + menuArray[qNum]+'_main.png';
 	currentMenu = menuArray[qNum] + '_main';
 }
 
@@ -98,52 +98,52 @@ var checkClick = function(event)
 		{
 			if (x>=41 && x<=101)
 			{
-				currentImg.src = 'menu_word.png';
+				currentImg.src = './images/menu_word.png';
 				currentMenu = 'menu_word';
 			}
 			else if (x>=102 && x<=143)
 			{
-				currentImg.src = 'menu_file.png';
+				currentImg.src = './images/menu_file.png';
 				currentMenu = 'menu_file';
 			}
 			else if (x>=144 && x<=187)
 			{
-				currentImg.src = 'menu_edit.png';
+				currentImg.src = './images/menu_edit.png';
 				currentMenu = 'menu_edit';
 			}
 			else if (x>=188 && x<=237)
 			{
-				currentImg.src = 'menu_view.png';
+				currentImg.src = './images/menu_view.png';
 				currentMenu = 'menu_view';
 			}
 			else if (x>=238 && x<=294)
 			{
-				currentImg.src = 'menu_insert.png';
+				currentImg.src = './images/menu_insert.png';
 				currentMenu = 'menu_insert';
 			}
 			else if (x>=295 && x<=360)
 			{
-				currentImg.src = 'menu_format.png';
+				currentImg.src = './images/menu_format.png';
 				currentMenu = 'menu_format';
 			}
 			else if (x>=361 && x<=409)
 			{
-				currentImg.src = 'menu_font.png';
+				currentImg.src = './images/menu_font.png';
 				currentMenu = 'menu_font';
 			}
 			else if (x>=410 && x<=465)
 			{
-				currentImg.src = 'menu_tools.png';
+				currentImg.src = './images/menu_tools.png';
 				currentMenu = 'menu_tools';
 			}
 			else if (x>=466 && x<=521)
 			{
-				currentImg.src = 'menu_table.png';
+				currentImg.src = './images/menu_table.png';
 				currentMenu = 'menu_table';
 			}
 			else if (x>=522 && x<=592)
 			{
-				currentImg.src = 'menu_window.png';
+				currentImg.src = './images/menu_window.png';
 				currentMenu = 'menu_window';
 			}
 		}
@@ -154,42 +154,42 @@ var checkClick = function(event)
 		{
 			if (x>=9 && x<=65)
 			{
-				currentImg.src = 'ribbon_file.png';
+				currentImg.src = './images/ribbon_file.png';
 				currentMenu = 'ribbon_file';
 			}
 			else if (x>=69 && x<=124)
 			{
-				currentImg.src = 'ribbon_main.png';
+				currentImg.src = './images/ribbon_main.png';
 				currentMenu = 'ribbon_main';
 			}
 			else if (x>=128 && x<=181)
 			{
-				currentImg.src = 'ribbon_insert.png';
+				currentImg.src = './images/ribbon_insert.png';
 				currentMenu = 'ribbon_insert';
 			}
 			else if (x>=185 && x<=271)
 			{
-				currentImg.src = 'ribbon_pagelayout.png';
+				currentImg.src = './images/ribbon_pagelayout.png';
 				currentMenu = 'ribbon_pagelayout';
 			}
 			else if (x>=275 && x<=355)
 			{
-				currentImg.src = 'ribbon_references.png';
+				currentImg.src = './images/ribbon_references.png';
 				currentMenu = 'ribbon_references';
 			}
 			else if (x>=359 && x<=427)
 			{
-				currentImg.src = 'ribbon_mailings.png';
+				currentImg.src = './images/ribbon_mailings.png';
 				currentMenu = 'ribbon_mailings';
 			}
 			else if (x>=431 && x<=491)
 			{
-				currentImg.src = 'ribbon_review.png';
+				currentImg.src = './images/ribbon_review.png';
 				currentMenu = 'ribbon_review';
 			}
 			else if (x>=495 && x<=544)
 			{
-				currentImg.src = 'ribbon_view.png';
+				currentImg.src = './images/ribbon_view.png';
 				currentMenu = 'ribbon_view';
 			}
 		}
@@ -198,7 +198,7 @@ var checkClick = function(event)
 	{
 		if (x>=70 && x<=208 && y>=31 && y<=51)
 		{
-			currentImg.src = 'command_show.png';
+			currentImg.src = './images/command_show.png';
 			currentMenu = 'command_show';
 		}
 	}
